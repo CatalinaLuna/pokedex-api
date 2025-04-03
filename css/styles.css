@@ -1,0 +1,327 @@
+/* Estilo base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    image-rendering: pixelated;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #1f1f1f;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    /* background-image: 
+        linear-gradient(#e8e8e0 1px, transparent 1px),
+        linear-gradient(90deg, #e8e8e0 1px, transparent 1px); */
+    background-size: 10px 10px;
+}
+
+/* Contenedor principal */
+.container {
+    width: 350px;
+    height: 600px; /* Altura fija para evitar cambios */
+    background: #f8f8f8;
+    border: 8px solid #000;
+    border-radius: 0;
+    box-shadow: 
+        0 0 0 4px #a0a0a0,
+        0 0 0 8px #606060,
+        0 8px 0 8px #404040,
+        0 10px 20px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+/* Ajustes para pantallas más grandes */
+@media (min-width: 768px) {
+    .container {
+        width: 480px;
+        height: 550px; /* Altura proporcional al escalado */
+        transform: scale(1.1);
+        margin: 40px auto;
+    }
+}
+
+/* Borde superior rojo característico */
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 16px;
+    background: #d00000;
+    border-bottom: 4px solid #000;
+}
+
+/* Contenido interior */
+.content {
+    padding: 30px 15px 15px;
+    margin-top: 10px;
+    height: calc(100% - 20px);
+    overflow-y: auto; 
+}
+
+/* Título estilo GBA */
+h1 {
+    font-size: 18px;
+    color: #000;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: none;
+    letter-spacing: 0;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 16px;
+    }
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #000;
+}
+
+/* Grupo de búsqueda */
+.search-group {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 8px;
+    flex-direction: column;
+}
+
+@media (min-width: 400px) {
+    .search-group {
+        flex-direction: row;
+    }
+}
+
+input {
+    flex: 1;
+    padding: 8px;
+    font-size: 10px;
+    border: 3px solid #000;
+    background: #fff;
+    font-family: 'Press Start 2P', cursive;
+    height: 32px;
+    min-width: 0;
+}
+
+@media (max-width: 480px) {
+    input {
+        font-size: 9px;
+        padding: 6px;
+    }
+}
+
+button {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 0 12px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    height: 32px;
+    cursor: pointer;
+    transition: all 0.1s;
+    position: relative;
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    button {
+        font-size: 9px;
+        padding: 0 8px;
+    }
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+button::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+}
+
+/* Tarjeta de Pokémon */
+.pokemon-card {
+    background: #fff;
+    border: 3px solid #000;
+    padding: 12px;
+    position: relative;
+    min-height: 350px; /* Altura mínima para mantener el espacio */
+}
+
+.pokemon-card::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    height: 2px;
+    background: rgba(0,0,0,0.1);
+}
+
+.pokemon-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #000;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pokemon-name {
+    font-size: 14px;
+    color: #000;
+    flex: 1;
+    min-width: 60%;
+}
+
+@media (max-width: 480px) {
+    .pokemon-name {
+        font-size: 12px;
+    }
+}
+
+.pokemon-number {
+    font-size: 12px;
+    color: #606060;
+}
+
+/* IMAGEN MÁS GRANDE */
+.pokemon-image-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+    height: 180px;
+}
+
+.pokemon-image {
+    width: 480px;
+    height: 180px;
+    background: #e8e8e0;
+    border: 3px solid #000;
+    image-rendering: pixelated;
+    object-fit: contain;
+}
+
+@media (max-width: 480px) {
+    .pokemon-image {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+.pokemon-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    font-size: 10px;
+}
+
+@media (max-width: 480px) {
+    .pokemon-details {
+        font-size: 8px;
+        gap: 6px;
+    }
+}
+
+.detail-item {
+    background: #e8e8e0;
+    padding: 6px;
+    border: 2px solid #000;
+    min-width: 0;
+}
+
+.detail-label {
+    color: #606060;
+    margin-bottom: 4px;
+    word-break: break-word;
+}
+
+/* Mensaje de error */
+.error-message {
+    font-size: 12px;
+    color: #d00000;
+    text-align: center;
+    margin: 12px 0;
+    word-break: break-word;
+}
+
+@media (max-width: 480px) {
+    .error-message {
+        font-size: 10px;
+    }
+}
+
+.error-image {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    image-rendering: pixelated;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    display: block;
+}
+
+/* Tipos de Pokémon (colores GBA) */
+.type-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 8px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    border: 2px solid #000;
+    color: #fff;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .type-badge {
+        font-size: 7px;
+        padding: 1px 4px;
+    }
+}
+
+.type-normal { background: #a8a878; }
+.type-fire { background: #f08030; }
+.type-water { background: #6890f0; }
+.type-electric { background: #f8d030; }
+.type-grass { background: #78c850; }
+.type-ice { background: #98d8d8; }
+.type-fighting { background: #c03028; }
+.type-poison { background: #a040a0; }
+.type-ground { background: #e0c068; }
+.type-flying { background: #a890f0; }
+.type-psychic { background: #f85888; }
+.type-bug { background: #a8b820; }
+.type-rock { background: #b8a038; }
+.type-ghost { background: #705898; }
+.type-dragon { background: #7038f8; }
+.type-dark { background: #705848; }
+.type-steel { background: #b8b8d0; }
+.type-fairy { background: #ee99ac; }
